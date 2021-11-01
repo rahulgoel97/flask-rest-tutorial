@@ -41,7 +41,7 @@ def add_user():
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify(new_user)
+    return user_schema.jsonify(new_user)
 
 
 # endpoint to show all users
@@ -49,7 +49,7 @@ def add_user():
 def get_user():
     all_users = User.query.all()
     result = users_schema.dump(all_users)
-    return jsonify(result.data)
+    return jsonify(result)
 
 
 # endpoint to get user detail by id
